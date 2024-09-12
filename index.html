@@ -10,7 +10,34 @@
     <script>
         function getUserData(ID){
             
+            const url = 'https://jsonplaceholder.typicode.com/users';
+            
+            fetch(url)
+            .then(result => result.json())
+            .then(data => {
+                let gotUser = false;
+                data.forEach(user => {
+                    if(user.id === ID){
+                        gotUser = true;
+                        console.log(user);
+                        
+                    }
+                })
+                if(!gotUser) console.log("Пользователь не найден");
+            }).catch(err => {
+                console.error('Errors, errors, alarm, alarm!!!');
+        });        
+        
+        
+        
+        
         }
+
+    
+
+
+        
+
     </script>
 </body>
 </html>
